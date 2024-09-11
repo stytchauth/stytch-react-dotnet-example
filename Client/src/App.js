@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import Button from './components/Button'
+import SendOtpButton from './components/SendOtpButton'
+import AuthenticateOtpButton from "./components/AuthenticateOtpButton";
 
 function App() {
   return (
       <div>
-        <Button/>
+        <SendOtpButton/>
+        <AuthenticateOtpButton/>
       </div>
   );
 }

@@ -1,3 +1,9 @@
+using System;
+using Stytch;
+using Stytch.net.Clients;
+using Stytch.net.Models.Consumer;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -30,29 +36,64 @@ app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+var client = new ConsumerClient(new ClientConfig
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+    ProjectId = "project-test-61b0afb4-da8f-42c7-8bf9-43d3d00593a9",
+    ProjectSecret = "secret-test-SJHdw2EDqbClgrWcXb9BQkINpNSWhVDnqUQ=",
+    Environment = "https://test.stytch.com/"
+});
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/send_otp", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
+     var request = new OTPsEmailLoginOrCreateRequest() {
+        Email = "ollie@stytch.com",
+     };
+
+     var response = client.OTPs.Email.LoginOrCreate(request);
+     return response;
+
 })
-.WithName("GetWeatherForecast")
+.WithName("SendOtp")
 .WithOpenApi();
 
-app.Run();
+app.MapGet("/authenticate_otp", async (string otp, string methodId) =>
+    {
+        if (string.IsNullOrEmpty(otp))
+        {
+            return Results.BadRequest("OTP code is required.");
+        }
+        if (string.IsNullOrEmpty(methodId))
+        {
+            return Results.BadRequest("methodId code is required.");
+        }
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
+        var request = new OTPsAuthenticateRequest
+        {
+            MethodId = methodId,
+            Code = otp,
+            // Attributes = null,
+            // Options = null,
+            // SessionToken = null,
+            // SessionDurationMinutes = null,
+            // SessionJwt = null,
+            // SessionCustomClaims = null
+        };
+        
+        var response = await client.OTPs.Authenticate(request);
+
+        // Assuming `response` contains information about whether the OTP was successful
+        if (response.StatusCode == 200)
+        {
+            return Results.Ok(response);
+        }
+        else
+        {
+            return Results.BadRequest("Failed to authenticate OTP.");
+        }
+    })
+    .WithName("Authenticate OTP")
+    .WithOpenApi();
+
+
+
+app.Run();

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 
-const Button = () => {
+const SendOtpButton = () => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
 
     const handleButtonClick = async () => {
         try {
-            const response = await fetch("http://localhost:5135/weatherforecast");
+            const response = await fetch("http://localhost:5135/send_otp");
             // Check if the response status is OK (status in the range 200-299)
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -35,4 +35,4 @@ const Button = () => {
     );
 };
 
-export default Button;
+export default SendOtpButton;
