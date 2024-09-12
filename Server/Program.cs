@@ -45,15 +45,22 @@ var client = new ConsumerClient(new ClientConfig
     Environment = "https://test.stytch.com/"
 });
 
-app.MapGet("/send_otp", () =>
+app.MapGet("/send_otp", async (string email) =>
 {
-     var request = new OTPsEmailLoginOrCreateRequest() {
-        Email = "ollie@stytch.com",
+    
+    if (string.IsNullOrEmpty(email))
+    {
+        return Results.BadRequest("email code is required.");
+    }
+
+     var request = new OTPsEmailLoginOrCreateRequest {
+        Email = email,
      };
 
-     var response = client.OTPs.Email.LoginOrCreate(request);
-     return response;
-
+     var response = await client.OTPs.Email.LoginOrCreate(request);
+    
+     return Results.Ok(response);
+    //  return response;
 })
 .WithName("SendOtp")
 .WithOpenApi();

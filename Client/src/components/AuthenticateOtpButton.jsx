@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
+// import './AuthenticateOtpButton.css'; // Import the CSS file for styling
 
-const AuthenticateOtpButton = () => {
+const AuthenticateOtpButton = ({ methodId, onResponse }) => {
     const [otp, setOtp] = useState('');
-    const [methodId, setMethodId] = useState('');
-    const [response, setResponse] = useState(null);
     const [error, setError] = useState(null);
 
     const handleAuthenticateClick = async () => {
@@ -13,41 +12,27 @@ const AuthenticateOtpButton = () => {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const result = await response.json();
-            setResponse(result);
+            onResponse(result); // Pass the result to the parent component
             setError(null);
         } catch (error) {
             console.error('Error:', error);
             setError('An error occurred during OTP authentication.');
+            onResponse({ error: error.message }); // Pass the error to the parent component
         }
     };
 
     return (
-        <div>
-            <div>
-                <label>
-                    OTP:
-                    <input
-                        type="text"
-                        value={otp}
-                        onChange={(e) => setOtp(e.target.value)}
-                    />
-                </label>
-            </div>
-            <div>
-                <label>
-                    Method ID:
-                    <input
-                        type="text"
-                        value={methodId}
-                        onChange={(e) => setMethodId(e.target.value)}
-                    />
-                </label>
-            </div>
-            <button onClick={handleAuthenticateClick}>Authenticate OTP</button>
-            <div>
-                {error && <p>{error}</p>}
-                {response && <pre>{JSON.stringify(response, null, 2)}</pre>}
-            </div>
+        <div className="authenticate-container">
+            <label>
+                OTP:
+                <input
+                    type="text"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                />
+            </label>
+            <button className="btn" onClick={handleAuthenticateClick}>Authenticate OTP</button>
+            {error && <p className="error">{error}</p>}
         </div>
     );
 };
