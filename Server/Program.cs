@@ -2,6 +2,8 @@ using System;
 using Stytch;
 using Stytch.net.Clients;
 using Stytch.net.Models.Consumer;
+using Stytch.net.Exceptions;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -78,18 +80,58 @@ app.MapGet("/authenticate_otp", async (string otp, string methodId) =>
             // SessionJwt = null,
             // SessionCustomClaims = null
         };
-        
-        var response = await client.OTPs.Authenticate(request);
+
+         try
+            {
+                var response = await client.OTPs.Authenticate(request);
+
+                if (response.StatusCode == 200)
+                {
+                    Console.WriteLine(response.User);
+                    return Results.Ok(response);
+                }
+                else
+                {
+                    // Handle different status codes if necessary
+                    return Results.BadRequest("Failed to authenticate OTP.");
+                }
+            }
+            catch (StytchApiException ex)
+            {
+                // Log the exception details
+                Console.WriteLine($"Error Type: {ex.ErrorType}");
+                Console.WriteLine($"Error Message: {ex.ErrorMessage}");
+                Console.WriteLine($"Error URL: {ex.ErrorUrl}");
+
+                // Handle the exception based on the error type
+                if (ex.StatusCode == 401)
+                {
+                    // Specific handling for unauthorized errors
+                    return Results.BadRequest("Authentication failed. The OTP may be expired or invalid.");
+                }
+                else
+                {
+                    // General error handling
+                    return Results.BadRequest("Error known occurred");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle unexpected exceptions
+                Console.WriteLine($"Unexpected error: {ex.Message}");
+                return Results.BadRequest("Error random occurred");
+            }
 
         // Assuming `response` contains information about whether the OTP was successful
-        if (response.StatusCode == 200)
-        {
-            return Results.Ok(response);
-        }
-        else
-        {
-            return Results.BadRequest("Failed to authenticate OTP.");
-        }
+//        if (response.StatusCode == 200)
+//        {
+//            Console.WriteLine(response.User);
+//            return Results.Ok(response);
+//        }
+//        else
+//        {
+//            return Results.BadRequest("Failed to authenticate OTP.");
+//        }
     })
     .WithName("Authenticate OTP")
     .WithOpenApi();

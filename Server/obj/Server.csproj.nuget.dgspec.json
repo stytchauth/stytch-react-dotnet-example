@@ -46,7 +46,7 @@
           "dependencies": {
             "Example.Stytch": {
               "target": "Package",
-              "version": "[1.0.2, )"
+              "version": "[1.0.3, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",

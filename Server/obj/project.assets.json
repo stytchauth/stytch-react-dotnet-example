@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "Example.Stytch/1.0.2": {
+      "Example.Stytch/1.0.3": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3"
@@ -136,14 +136,14 @@
     }
   },
   "libraries": {
-    "Example.Stytch/1.0.2": {
-      "sha512": "9Q05HSbPM9uh0f18xRP5Z36EzIXYxQTvhBKhwCuHn9SkSMK6x85xtjOHvaWxp+ZBVf3vUN3XpC2SMqPnc08aOg==",
+    "Example.Stytch/1.0.3": {
+      "sha512": "B2S3ge1aml7eNFhsen/1sxKMpQODi6vddMLjnR4LHmd2PZFqn4wlXD0GlTDDbEAAN27aL7gyCfBLtQbAX1sSEA==",
       "type": "package",
-      "path": "example.stytch/1.0.2",
+      "path": "example.stytch/1.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "example.stytch.1.0.2.nupkg.sha512",
+        "example.stytch.1.0.3.nupkg.sha512",
         "example.stytch.nuspec",
         "lib/net8.0/Stytch.net.dll"
       ]
@@ -522,7 +522,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Example.Stytch >= 1.0.2",
+      "Example.Stytch >= 1.0.3",
       "Microsoft.AspNetCore.OpenApi >= 8.0.8",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
@@ -572,7 +572,7 @@
         "dependencies": {
           "Example.Stytch": {
             "target": "Package",
-            "version": "[1.0.2, )"
+            "version": "[1.0.3, )"
           },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",

@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3h9XYK6nRws=",
+  "dgSpecHash": "LWOz4J5KA7o=",
   "success": true,
   "projectFilePath": "/Users/ollieelmgren/Desktop/Stytch-Repos/stytch-react-dotnet-example/Server/Server.csproj",
   "expectedPackageFiles": [
-    "/Users/ollieelmgren/.nuget/packages/example.stytch/1.0.2/example.stytch.1.0.2.nupkg.sha512",
+    "/Users/ollieelmgren/.nuget/packages/example.stytch/1.0.3/example.stytch.1.0.3.nupkg.sha512",
     "/Users/ollieelmgren/.nuget/packages/microsoft.aspnetcore.openapi/8.0.8/microsoft.aspnetcore.openapi.8.0.8.nupkg.sha512",
     "/Users/ollieelmgren/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "/Users/ollieelmgren/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
