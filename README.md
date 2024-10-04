@@ -14,46 +14,53 @@ To get started with the project, follow these steps:
 2. **Add Magic Link URL**:
     - Go to [Stytch Redirect URLs](https://stytch.com/dashboard/redirect-urls) and add `http://localhost:3000/authenticate` as a valid sign-up and login URL.
 
-3. **Open Two Terminals**:
-    - Open two terminal windows:
+3. **Clone this repository**
+     ```bash
+        git clone https://github.com/stytchauth/stytch-react-dotnet-example.git
+     ```
+
+5. **Open Two Terminals**:
+    One terminal will be dediated to your server side environment, and one terminal should reflect your client environment. 
         - In the first terminal, navigate to the server folder:
         ```bash
-        cd /path/to/your/server
+        cd /path/to/your/Server
         ```
         - In the second terminal, navigate to the client folder:
         ```bash
-        cd /path/to/your/client
+        cd /path/to/your/Client
         ```
 
-4. **Copy the Example Environment File**:
+6. **Copy the Example Environment File**:
     - In the **server terminal**, copy the `.env.template` file to `.env`. This file contains placeholder values for the environment variables needed by the project:
     ```bash
     cp .env.template .env
     ```
 
-5. **Set Environment Variables**:
+7. **Set Environment Variables**:
     - Open the `.env` file in a text editor and replace the placeholder values with your actual Stytch project ID and secret.
 
-6. **Install Server Dependencies**:
+8. **Install Server Dependencies**:
+
     - In the **server terminal**, install the necessary dependencies:
     ```bash
     dotnet restore
+    dotnet add package DotNetEnv
     ```
 
-7. **Build and Run the Server**:
+9. **Build and Run the Server**:
     - Compile and start the server application in the server terminal:
     ```bash
     dotnet build
     dotnet run
     ```
 
-8. **Install Client Dependencies**:
+10. **Install Client Dependencies**:
     - In the **client terminal**, install the necessary dependencies:
     ```bash
     npm install
     ```
 
-9. **Run the Client**:
+11. **Run the Client**:
     - Start the client application in the client terminal:
     ```bash
     npm start
