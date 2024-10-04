@@ -3,7 +3,9 @@ using Stytch;
 using Stytch.net.Clients;
 using Stytch.net.Models.Consumer;
 using Stytch.net.Exceptions;
+using DotNetEnv;
 
+Env.Load();
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,11 +40,20 @@ app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
+
+var projectId = Environment.GetEnvironmentVariable("STYTCH_PROJECT_ID");
+var projectSecret = Environment.GetEnvironmentVariable("STYTCH_SECRET");
+var environment = Environment.GetEnvironmentVariable("STYTCH_ENVIRONMENT");
+if (string.IsNullOrEmpty(projectId) || string.IsNullOrEmpty(projectSecret) || string.IsNullOrEmpty(environment))
+{
+    throw new InvalidOperationException("Environment variables for Stytch are not set.");
+}
+
 var client = new ConsumerClient(new ClientConfig
 {
-    ProjectId = "project-test-61b0afb4-da8f-42c7-8bf9-43d3d00593a9",
-    ProjectSecret = "secret-test-SJHdw2EDqbClgrWcXb9BQkINpNSWhVDnqUQ=",
-    Environment = "https://test.stytch.com/"
+    ProjectId = projectId,
+    ProjectSecret = projectSecret,
+    Environment = environment
 });
 
 app.MapGet("/send_otp", async (string email) =>
