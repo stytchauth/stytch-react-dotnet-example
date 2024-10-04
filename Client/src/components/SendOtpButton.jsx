@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import AuthenticateOtpButton from './AuthenticateOtpButton'; // Ensure the path is correct
+import AuthenticateOtpButton from './AuthenticateOtpButton'; 
 import '../styles/LoginPage.css';
 
 const ParentComponent = ({ onResponse }) => {
     const [methodId, setMethodID] = useState(null);
     const [error, setError] = useState(null);
     const [email, setEmail] = useState('');
-
+    const [showOtpInput, setShowOtpInput] = useState(false); 
 
     const handleButtonClick = async () => {
         console.log(email);
@@ -18,11 +18,12 @@ const ParentComponent = ({ onResponse }) => {
             }
 
             const result = await response.json();
-            onResponse(result); // Pass the result to the parent component
+            onResponse(result); 
             const emailId = result.emailId;
 
             console.log('Result:', result);
             setMethodID(emailId);
+            setShowOtpInput(true); 
             setError(null);
         } catch (error) {
             console.error('Error:', error);
@@ -32,16 +33,24 @@ const ParentComponent = ({ onResponse }) => {
 
     return (
         <div className="authenticate-container">
-            <label>
-                Email:
-                <input
-                    type="text"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </label>
-            <button className="btn" onClick={handleButtonClick}>Send OTP</button>
-            {methodId && <AuthenticateOtpButton methodId={methodId} onResponse={onResponse} />}
+            {!showOtpInput && ( 
+                <div className='email-form'>
+                    <input
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder='example@email.com'
+                    />
+                    <button className="btn" onClick={handleButtonClick}>Send OTP</button>
+                </div>
+            )}
+
+            {showOtpInput && ( 
+                <div className='otp-form'>
+                    <AuthenticateOtpButton methodId={methodId} onResponse={onResponse} />
+                </div>
+            )}
+
             {error && <p>{error}</p>}
         </div>
     );
