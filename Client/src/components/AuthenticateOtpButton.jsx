@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const AuthenticateOtpButton = ({ methodId, onResponse }) => {
     const [otp, setOtp] = useState('');
     const [error, setError] = useState(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const handleAuthenticateClick = async () => {
         try {
@@ -13,6 +14,7 @@ const AuthenticateOtpButton = ({ methodId, onResponse }) => {
             const result = await response.json();
             onResponse(result); 
             setError(null);
+            setIsAuthenticated(true);
         } catch (error) {
             console.error('Error:', error);
             setError('An error occurred during OTP authentication.');
@@ -33,6 +35,7 @@ const AuthenticateOtpButton = ({ methodId, onResponse }) => {
                 <button className="btn" onClick={handleAuthenticateClick}>Authenticate OTP</button>
             </div>
             {error && <p className="error">{error}</p>}
+            {isAuthenticated && <p className="success">The OTP has been successfully authenticated.</p>}
         </div>
     );
 };
