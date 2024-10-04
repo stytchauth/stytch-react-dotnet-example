@@ -20,7 +20,8 @@ To get started with the project, follow these steps:
      ```
 
 5. **Open Two Terminals**:
-    One terminal will be dediated to your server side environment, and one terminal should reflect your client environment. 
+    One terminal will be dediated to your server side environment, and one terminal should reflect your client environment.
+   
         - In the first terminal, navigate to the server folder:
         ```bash
         cd /path/to/your/Server
@@ -30,16 +31,16 @@ To get started with the project, follow these steps:
         cd /path/to/your/Client
         ```
 
-6. **Copy the Example Environment File**:
+7. **Copy the Example Environment File**:
     - In the **server terminal**, copy the `.env.template` file to `.env`. This file contains placeholder values for the environment variables needed by the project:
     ```bash
     cp .env.template .env
     ```
 
-7. **Set Environment Variables**:
+8. **Set Environment Variables**:
     - Open the `.env` file in a text editor and replace the placeholder values with your actual Stytch project ID and secret.
 
-8. **Install Server Dependencies**:
+9. **Install Server Dependencies**:
 
     - In the **server terminal**, install the necessary dependencies:
     ```bash
@@ -47,20 +48,20 @@ To get started with the project, follow these steps:
     dotnet add package DotNetEnv
     ```
 
-9. **Build and Run the Server**:
+10. **Build and Run the Server**:
     - Compile and start the server application in the server terminal:
     ```bash
     dotnet build
     dotnet run
     ```
 
-10. **Install Client Dependencies**:
+11. **Install Client Dependencies**:
     - In the **client terminal**, install the necessary dependencies:
     ```bash
     npm install
     ```
 
-11. **Run the Client**:
+12. **Run the Client**:
     - Start the client application in the client terminal:
     ```bash
     npm start
