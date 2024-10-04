@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+# Stytch React .NET Example App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Stytch React .NET Example App! This project showcases a full-stack application built with React for the front-end and .NET for the back-end.
 
-## Available Scripts
+## Setup Instructions
 
-In the project directory, you can run:
+To get started with the project, follow these steps:
 
-### `npm start`
+1. **Create a Stytch Account**:
+    - Sign up for an account at [Stytch](https://stytch.com/).
+    - During the sign-up process, select **Consumer Authentication** as the authentication type you are interested in.
+    - Once your account is set up, a project called "My First Project" will be automatically created for you.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Add Magic Link URL**:
+    - Go to [Stytch Redirect URLs](https://stytch.com/dashboard/redirect-urls) and add `http://localhost:3000/authenticate` as a valid sign-up and login URL.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Open Two Terminals**:
+    - Open two terminal windows:
+        - In the first terminal, navigate to the server folder:
+        ```bash
+        cd /path/to/your/server
+        ```
+        - In the second terminal, navigate to the client folder:
+        ```bash
+        cd /path/to/your/client
+        ```
 
-### `npm test`
+4. **Copy the Example Environment File**:
+    - In the **server terminal**, copy the `.env.template` file to `.env`. This file contains placeholder values for the environment variables needed by the project:
+    ```bash
+    cp .env.template .env
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. **Set Environment Variables**:
+    - Open the `.env` file in a text editor and replace the placeholder values with your actual Stytch project ID and secret.
 
-### `npm run build`
+6. **Install Server Dependencies**:
+    - In the **server terminal**, install the necessary dependencies:
+    ```bash
+    dotnet restore
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+7. **Build and Run the Server**:
+    - Compile and start the server application in the server terminal:
+    ```bash
+    dotnet build
+    dotnet run
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+8. **Install Client Dependencies**:
+    - In the **client terminal**, install the necessary dependencies:
+    ```bash
+    npm install
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+9. **Run the Client**:
+    - Start the client application in the client terminal:
+    ```bash
+    npm start
+    ```
+## Next steps
 
-### `npm run eject`
+This example app showcases a small portion of what you can accomplish with Stytch. Here are a few ideas to explore:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Add additional login methods like [OAuth](https://stytch.com/docs/api/oauth-google-start) or [Passwords](https://stytch.com/docs/api/password-create).
+2. Secure your app further by building MFA authentication using methods like [OTP](https://stytch.com/docs/api/send-otp-by-sms).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Get help and join the community
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### 💬  Stytch community Slack
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Join the discussion, ask questions, and suggest new features in our ​[Slack community](https://stytch.com/docs/resources/support/overview)!
 
-## Learn More
+#### ❓ Need support?
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Check out the [Stytch Forum](https://forum.stytch.com/) or email us at [support@stytch.com](mailto:support@stytch.com).
