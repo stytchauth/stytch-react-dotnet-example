@@ -22,14 +22,14 @@ To get started with the project, follow these steps:
 5. **Open Two Terminals**:
     One terminal will be dediated to your server side environment, and one terminal should reflect your client environment.
    
-        - In the first terminal, navigate to the server folder:
-        ```bash
-        cd /path/to/your/Server
-        ```
-        - In the second terminal, navigate to the client folder:
-        ```bash
-        cd /path/to/your/Client
-        ```
+   In the first terminal, navigate to the server folder:
+   ```bash
+   cd /path/to/your/Server
+   ```
+   In the second terminal, navigate to the client folder:
+   ```bash
+   cd /path/to/your/Client
+   ```
 
 7. **Copy the Example Environment File**:
     - In the **server terminal**, copy the `.env.template` file to `.env`. This file contains placeholder values for the environment variables needed by the project:
