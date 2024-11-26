@@ -64,9 +64,7 @@ app.MapGet("/send_otp", async (string email) =>
         return Results.BadRequest("email code is required.");
     }
 
-     var request = new OTPsEmailLoginOrCreateRequest {
-        Email = email,
-     };
+     var request = new OTPsEmailLoginOrCreateRequest(email);
 
      var response = await client.OTPs.Email.LoginOrCreate(request);
     
@@ -87,17 +85,7 @@ app.MapGet("/authenticate_otp", async (string otp, string methodId) =>
             return Results.BadRequest("methodId code is required.");
         }
 
-        var request = new OTPsAuthenticateRequest
-        {
-            MethodId = methodId,
-            Code = otp,
-            // Attributes = null,
-            // Options = null,
-            // SessionToken = null,
-            // SessionDurationMinutes = null,
-            // SessionJwt = null,
-            // SessionCustomClaims = null
-        };
+        var request = new OTPsAuthenticateRequest(methodId, otp);
 
          try
             {
