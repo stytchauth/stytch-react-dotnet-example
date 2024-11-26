@@ -29,3 +29,5 @@ yarn-error.log*
 /Server/bin/
 /Server/obj/
 
+# Ignore all .sln files
+*.sln
