@@ -24,3 +24,10 @@ yarn-error.log*
 
 #env
 .env
+
+# Ignore bin and obj folders
+/Server/bin/
+/Server/obj/
+
+# Ignore all .sln files
+*.sln
