@@ -69,7 +69,6 @@ app.MapGet("/send_otp", async (string email) =>
      var response = await client.OTPs.Email.LoginOrCreate(request);
     
      return Results.Ok(response);
-    //  return response;
 })
 .WithName("SendOtp")
 .WithOpenApi();
@@ -127,17 +126,6 @@ app.MapGet("/authenticate_otp", async (string otp, string methodId) =>
                 Console.WriteLine($"Unexpected error: {ex.Message}");
                 return Results.BadRequest("Error random occurred");
             }
-
-        // Assuming `response` contains information about whether the OTP was successful
-//        if (response.StatusCode == 200)
-//        {
-//            Console.WriteLine(response.User);
-//            return Results.Ok(response);
-//        }
-//        else
-//        {
-//            return Results.BadRequest("Failed to authenticate OTP.");
-//        }
     })
     .WithName("Authenticate OTP")
     .WithOpenApi();

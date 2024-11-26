@@ -34,3 +34,5 @@
 /Users/ollieelmgren/Desktop/Stytch-Repos/stytch-react-dotnet-example/Server/obj/Debug/net8.0/Server.sourcelink.json
 /Users/ollieelmgren/Desktop/Stytch-Repos/stytch-react-dotnet-example/Server/bin/Debug/net8.0/Stytch.net.dll
 /Users/ollieelmgren/Desktop/Stytch-Repos/stytch-react-dotnet-example/Server/bin/Debug/net8.0/Newtonsoft.Json.dll
+/Users/ollieelmgren/Desktop/Stytch-Repos/stytch-react-dotnet-example/Server/bin/Debug/net8.0/DotNetEnv.dll
+/Users/ollieelmgren/Desktop/Stytch-Repos/stytch-react-dotnet-example/Server/bin/Debug/net8.0/Sprache.dll
